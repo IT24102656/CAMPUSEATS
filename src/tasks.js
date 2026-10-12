@@ -1,4 +1,14 @@
-﻿// CampusEats task list
+﻿const express = require('express');
+const cors = require('cors');
+const app = express();
+
+// Configure CORS for your Netlify frontend
+app.use(cors({
+  origin: 'https://cheery-sfogliatella-2b309e.netlify.app',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
+// CampusEats task list
 const VIP_DISCOUNT = 0.1;
 
 function calculateTotal(price, quantity, customerType) {
