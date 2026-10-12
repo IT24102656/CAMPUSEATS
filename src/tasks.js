@@ -4,12 +4,8 @@ const app = express();
 
 app.use(express.json());
 
-// Configure CORS for your Netlify frontend
-app.use(cors({
-  origin: 'https://cheery-sfogliatella-2b309e.netlify.app',
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization']
-}));
+// Allow all origins to resolve CORS issues with Netlify
+app.use(cors());
 
 // CampusEats task list
 const VIP_DISCOUNT = 0.1;
@@ -25,9 +21,9 @@ function calculateTotal(price, quantity, customerType) {
     : subtotal;
 }
 
-// Health check endpoint for Render
+// Health check endpoint
 app.get('/', (req, res) => {
-  res.send('CampusEats Backend API is running!');
+  res.send('CampusEats Backend API is connected and running!');
 });
 
 // Calculate total endpoint
